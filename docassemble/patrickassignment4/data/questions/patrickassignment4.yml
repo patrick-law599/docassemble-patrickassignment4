@@ -1,0 +1,128 @@
+---
+Objects:
+  - user: Individual
+  - household: DAList.using(object_type=Individual)
+---
+Question: |
+  What's your name?
+Fields:
+  - First: user.name.first
+  - Last: user.name.last
+---
+code: |
+  if has_lawyer:
+    if acting_lawyer:
+      represent = False
+    else:
+      represent = False
+  else:
+    represent = True
+    
+  if afford_lawyer:
+    represent = False
+---
+code: |
+  if Alberta_resident and location_matter:
+    residency = True
+  else:
+    residency = False
+---
+code: |
+  if criminal_matter or family_matter:
+    service_requirement = True
+  else:
+    service_requirement = False
+---
+mandatory: true
+code: |
+ if service_requirement and residency and (represent or appeal_matter):
+   can_help = True
+ else:
+   can_help = False
+---
+question: |
+  Do you have a lawyer?
+yesno: has_lawyer
+---
+question: |
+  Is your lawyer still acting for you?
+yesno: acting_lawyer
+---
+question: |
+  Can you afford a lawyer?
+yesno: afford_lawyer
+---
+question: |
+  Is your the legal matter located in Alberta?
+yesno: location_matter
+---
+question: |
+  Is this a Family Law matter?
+yesno: family_matter
+---
+need:
+  - user.name.first
+question: |
+  Is this a Criminal Law matter?
+yesno: criminal_matter
+---
+question: |
+  Do you currently live in Alberta?
+yesno: Alberta_resident
+---
+question: |
+  Is this matter an appeal for which you received Legal Aid of Alberta assistance?
+yesno: appeal_matter
+---
+Question: |
+  Have you been here before (choose one):
+Field: client_before
+Choices:
+  - Yes
+  - No
+  - "I don't know."
+
+---
+Question: |
+  Why are you here today?
+Fields:
+  - "Select all that apply": today_problem
+    datatype: checkboxes
+    choices:
+      - I have a problem with my landlord.
+      - I want to get a divorce.
+      - I got fired because of discrimination.
+      - I have a custody problem.
+      - I want my MTV.
+
+---
+generic object: Individual
+question: |
+  ${ user }, do you live with another person?
+yesno: household.there_are_any
+
+---
+question: |
+  Tell us the name of the ${ ordinal(i) } person. 
+fields:
+  - First name: household[i].name.first
+  - Last name: household[i].name.last
+---
+question: |
+  So far you have told us about ${ len(household) } people.
+  Are there more people?
+yesno: household.there_is_another
+
+---
+
+question: |
+  Your household is ${household}
+yesno: nextscreen
+---
+Question: Here is your document.
+attachment:
+   name: Legal Aid Eligibity
+   filename: test.md
+   content file: patrickassignment4.md
+Mandatory: true
+---
