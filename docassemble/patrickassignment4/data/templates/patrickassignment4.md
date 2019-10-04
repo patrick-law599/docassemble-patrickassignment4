@@ -18,9 +18,9 @@ you live in Alberta
 you do not live in Alberta 
 % endif
 % if location_matter:
-and the matter is located in Alberta.
+and your legal matter is located in Alberta.
 % else:
-and the matter is is a province other than Alberta.
+and your legal matter is in a province other than Alberta.
 % endif
 % if criminal_matter:
 You have told us that this is a Criminal Law matter.
@@ -28,12 +28,12 @@ You have told us that this is a Criminal Law matter.
 You have told us that this is a Family Law matter.
 % else:
 This is neither a Family Law matter nor a Criminal Law matter. 
-As a result, we will be unable to assist you with your matter.
+As a result, we will be unable to assist you.
 % endif
 % if afford_lawyer:
 You have told us that you can afford a lawyer.
 % else:
-You have told us that you are unable to afford a lawyer.
+You have told us that you cannot afford a lawyer.
 % endif
 % if has_lawyer:
 You have told us that you already have a lawyer
@@ -41,16 +41,18 @@ You have told us that you already have a lawyer
 You do not currently have a lawyer.
 % endif
 % if acting_lawyer:
- and your lawyer is currently acting in this matter.
+ and your lawyer is currently acting for you in this matter.
 % endif
 % if appeal_matter:
 Your matter is an appeal of a matter that you previously received Legal Aid of Alberta assistence.
 % endif
 
 % if can_help:
-We are pleased to inform you that we have determined that you meet our requirements for assistance and we will be able to assist you with this matter.
+Based on the information that you have provided us today, we have determined that you meet our requirements for assistance. 
+A member of our staff will contact you shortly to begin the process. 
 % else:
-We are writing to inform you that you do not meet the requirements of our organization for assistance.
+According to what you have told us today, we regretfully must inform you that you do not meet the requirements for assistance at this time.
+Thank you, come again.
 % endif
  
 % if len(household) == 0:

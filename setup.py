@@ -44,7 +44,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
 
 setup(name='docassemble.patrickassignment4',
       version='0.0.1',
-      description=('Assignment 3'),
+      description=('Assignment 4'),
       long_description='# docassemble.helloworld\r\n\r\nA docassemble extension.\r\n\r\n## Author\r\n\r\nPatrick White, piwhite@ualberta.ca\r\n\r\n',
       long_description_content_type='text/markdown',
       author='Patrick White',
